@@ -4,7 +4,6 @@ import com.example.di.mainModule
 import io.ktor.application.*
 import com.example.plugins.*
 import org.koin.ktor.ext.Koin
-import org.koin.ktor.ext.modules
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -14,8 +13,8 @@ fun Application.module() {
     install(Koin) {
         modules(mainModule)
     }
-    configureRouting()
     configureSockets()
+    configureRouting()
     configureSerialization()
     configureMonitoring()
     configureSecurity()

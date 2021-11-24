@@ -42,13 +42,15 @@ fun Route.chatSocket(roomController: RoomController) {
             roomController.tryDisconnect(session.username)
         }
     }
-    fun Route.getAllMessages(roomController: RoomController) {
-        get("/messages") {
-            call.respond(
-                HttpStatusCode.OK,
-                roomController.getAllMessages()
-            )
-        }
+
+}
+
+fun Route.getAllMessages(roomController: RoomController) {
+    get("/messages") {
+        call.respond(
+            HttpStatusCode.OK,
+            roomController.getAllMessages()
+        )
     }
 }
 
