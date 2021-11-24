@@ -32,8 +32,8 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
     // KMongo
-    implementation("org.litote.kmongo:$kmongo_version")
-    implementation("org.litote.kmongo-coroutine:$kmongo_version")
+    implementation("org.litote.kmongo:kmongo:$kmongo_version")
+    implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
 
     // Koin core features
     implementation("io.insert-koin:koin-core:$koin_version")
