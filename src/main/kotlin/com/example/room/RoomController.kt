@@ -18,7 +18,7 @@ class RoomController(
         sessionId: String,
         socket: WebSocketSession
     ) {
-        if(members.containsKey(username)) {
+        if (members.containsKey(username)) {
             throw MemberAlreadyExistsException()
         }
         members[username] = Member(
@@ -27,7 +27,8 @@ class RoomController(
             socket = socket
         )
     }
-    suspend fun sendMessage(senderUsername: String, message: String){
+
+    suspend fun sendMessage(senderUsername: String, message: String) {
         members.values.forEach { member ->
             val messageEntity = Message(
                 text = message,
@@ -43,9 +44,9 @@ class RoomController(
 
     suspend fun getAllMessages() = messageDataSource.getAllMessages()
 
-    suspend fun tryDisconnect(username: String){
+    suspend fun tryDisconnect(username: String) {
         members[username]?.socket?.close()
-        if(members.containsKey(username)) {
+        if (members.containsKey(username)) {
             members.remove(username)
         }
     }

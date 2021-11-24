@@ -13,7 +13,8 @@ class MessageDataSourceImp(
         .descendingSort(Message::timestamp)
         .toList()
 
-    override suspend fun insertMessages(message: Message) {
+
+    override suspend fun insertMessage(message: Message) {
         messages.insertOne(message)
     }
 }
