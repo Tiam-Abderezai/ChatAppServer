@@ -16,7 +16,7 @@ import java.lang.Exception
 fun Route.chatSocket(roomController: RoomController) {
     webSocket("/chat-socket") {
         val session = call.sessions.get<ChatSession>()
-        if (session == null) {
+        if(session == null) {
             close(CloseReason(CloseReason.Codes.VIOLATED_POLICY, "No session."))
             return@webSocket
         }
@@ -27,14 +27,14 @@ fun Route.chatSocket(roomController: RoomController) {
                 socket = this
             )
             incoming.consumeEach { frame ->
-                if (frame is Frame.Text) {
+                if(frame is Frame.Text) {
                     roomController.sendMessage(
                         senderUsername = session.username,
                         message = frame.readText()
                     )
                 }
             }
-        } catch (e: MemberAlreadyExistsException) {
+        } catch(e: MemberAlreadyExistsException) {
             call.respond(HttpStatusCode.Conflict)
         } catch (e: Exception) {
             e.printStackTrace()
@@ -42,7 +42,6 @@ fun Route.chatSocket(roomController: RoomController) {
             roomController.tryDisconnect(session.username)
         }
     }
-
 }
 
 fun Route.getAllMessages(roomController: RoomController) {

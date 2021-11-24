@@ -3,7 +3,7 @@ package com.example.data
 import com.example.data.model.Message
 import org.litote.kmongo.coroutine.CoroutineDatabase
 
-class MessageDataSourceImp(
+class MessageDataSourceImpl(
     private val db: CoroutineDatabase
 ) : MessageDataSource {
 

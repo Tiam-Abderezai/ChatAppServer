@@ -1,7 +1,7 @@
 package com.example.di
 
 import com.example.data.MessageDataSource
-import com.example.data.MessageDataSourceImp
+import com.example.data.MessageDataSourceImpl
 import com.example.room.RoomController
 import org.koin.dsl.module
 import org.litote.kmongo.coroutine.coroutine
@@ -14,7 +14,7 @@ val mainModule = module {
             .getDatabase("message_db_yt")
     }
     single<MessageDataSource> {
-        MessageDataSourceImp(get())
+        MessageDataSourceImpl(get())
     }
     single {
         RoomController(get())
